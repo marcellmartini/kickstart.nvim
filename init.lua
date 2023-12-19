@@ -561,6 +561,15 @@ require('mason-lspconfig').setup()
 --
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
+
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = { vim.api.nvim_buf_get_name(0) },
+  }
+  vim.lsp.buf.execute_command(params)
+end
+
 local servers = {
   -- clangd = {},
   gopls = {
@@ -580,7 +589,13 @@ local servers = {
       preferences = {
         disableSuggestions = true,
       }
-    }
+    },
+    commands = {
+      OrganizeImports = {
+        organize_imports,
+        description = "Organize Imports",
+      },
+    },
   },
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
@@ -615,7 +630,8 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
-      init_options = (servers[server_name] or {}).init_options
+      init_options = (servers[server_name] or {}).init_options,
+      commands = (servers[server_name] or {}).commands
     }
   end,
 }
