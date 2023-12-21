@@ -1,6 +1,4 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
+-- Load Map function
 Utils = require('utils')
 Map = Utils.map
 
@@ -20,6 +18,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Load options from file: lua/vim-options.lua
 require("vim-options")
+
+-- Load plugins inside dir: lua/plugins 
 require("lazy").setup("plugins")
 

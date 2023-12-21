@@ -1,3 +1,7 @@
+-- Map Leader
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- My nvim configs
 vim.wo.relativenumber = true
 vim.opt.tabstop = 4
