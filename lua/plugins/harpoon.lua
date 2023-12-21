@@ -1,15 +1,19 @@
 return {
-    'ThePrimeagen/harpoon',
-    version = "*",
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim"},
+    -- 'ThePrimeagen/harpoon',
+    -- version = "*",
     config = function()
-        local mark = require("harpoon.mark")
-        local ui = require("harpoon.ui")
+        local harpoon = require("harpoon")
+        -- local mark = require("harpoon.mark")
+        -- local ui = require("harpoon.ui")
 
-        Map("n", "<A-a>", mark.add_file)
-        Map("n", "<A-e>", ui.toggle_quick_menu)
+        Map("n", "<A-a>", function() harpoon:list():append() end)
+        Map("n", "<A-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-        Map("n", "<A-h>", function() ui.nav_file(1) end)
-        Map("n", "<A-t>", function() ui.nav_file(2) end)
-        Map("n", "<A-n>", function() ui.nav_file(3) end)
+        Map("n", "<A-h>", function() harpoon:list():select(1) end)
+        Map("n", "<A-t>", function() harpoon:list():select(2) end)
+        Map("n", "<A-n>", function() harpoon:list():select(3) end)
     end
 }
