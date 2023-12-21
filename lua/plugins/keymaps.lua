@@ -25,11 +25,6 @@ return {
     Map("n", "<leader>sc", "<cmd> Telescope colorscheme <CR>", { desc = '[S]earch [C]olorscheme' }),
     Map("n", "<leader>sC", "<cmd> Telescope git_commits <CR>", { desc = '[S]earch Git [C]commits' }),
 
-    -- Fugitive
-    Map("n", "<C-g>", "<cmd>G <CR>"),
-    Map("n", "<leader>gp", "<cmd>Git push <CR>", { desc = '[G]it [P]ush' }),
-    Map("n", "<leader>gp!", "<cmd>Git push -f<CR>", { desc = '[G]it [P]ush [F]orce' }),
-
     -- others
     Map("n", "J", "mzJ`z"),
     Map("n", "<C-d>", "<C-d>zz"),
