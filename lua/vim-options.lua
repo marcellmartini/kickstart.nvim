@@ -1,4 +1,7 @@
 -- Map Leader
+--
+--
+--
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -92,5 +95,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+-- Quit all
+vim.keymap.set('n', '<leader>Q', '<cmd>wqa<CR>', { desc = 'Quit' })
+
+-- Save all
+vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save' })
 
 return {}
